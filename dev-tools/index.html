@@ -44,9 +44,14 @@
     // Viewing DOM Elements
     console.dir(p);
 
-    // counting
-
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/rheupler')
+        .then(data => data.json())
+        .then(data => {
+          console.timeEnd('fetching data');
+          console.log(data);
+        })
 
   </script>
 </body>
