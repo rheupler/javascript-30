@@ -26,6 +26,7 @@ function paintToCanvas() {
     ctx.drawImage(video, 0, 0, width, height);
     let pixels = ctx.getImageData(0, 0, width, height);
     pixels = redEffect(pixels);
+    ctx.putImageData(pixels, 0, 0);
   }, 16);
 }
 
@@ -42,11 +43,12 @@ function takePhoto() {
 }
 
 function redEffect() {
-  for(let i = 0; < pixels.length; i += 4) {
-    pixels[i];
-    pixels[i + 1];
-    pixels[i + 2];
+  for(let i = 0; < pixels.data.length; i += 4) {
+    pixels[i + 0] = pixels.data[i + 0] + 100;
+    pixels[i + 1] = pixels.data[i + 1] - 50;
+    pixels[i + 2] = pixels.data[i + 2] * .9;
   }
+  return pixels;
 }
 
 video.addEventListener('canplay', paintToCanvas);
