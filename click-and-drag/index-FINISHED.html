@@ -40,11 +40,10 @@
   let startX;
   let scrollLeft;
 
-  slider.addEventListener('mousedown', (e) => {
+  slider.addEventListener('mousedown', () => {
     isDown = true;
     slider.classList.add('active');
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
+    console.log('weee')
   });
 
   slider.addEventListener('mouseleave', () => {
@@ -54,15 +53,12 @@
 
   slider.addEventListener('mouseup', () => {
     isDown = false;
-    slider.classList.remove('active');
+    slider.classList.remove('active')
   });
 
-  slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return;  // stop the fn from running
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 3;
-    slider.scrollLeft = scrollLeft - walk;
+  slider.addEventListener('mousemove', () => {
+    if (!isDown) return;
+    console.log('wee')
   });
 
 </script>
